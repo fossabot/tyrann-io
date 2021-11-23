@@ -11,7 +11,7 @@ import {
 import { InputOf, OutputOf } from '../src/types/infer';
 import { literal } from '../src/types/LiteralType';
 import { struct } from '../src/types/StructType';
-import { expectLeft, expectRight } from './util';
+import { expectLeft, expectRight } from './utils';
 
 describe('any', () => {
   it('can validate', () => {
