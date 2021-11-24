@@ -1,8 +1,13 @@
 {
-  "version": "0.9.1",
+  "version": "1.0.0-alpha.0",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/index.cjs",
+  "typings": "dist/src/index.d.ts",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.mjs"
+  },
+  "module": "./dist/index.mjs",
   "files": [
     "dist",
     "src"
@@ -11,30 +16,28 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "microbundle",
     "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "lint": "prettier --check src/",
+    "prepare": "yarn build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
   "peerDependencies": {},
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "yarn lint"
     }
   },
   "name": "tyrann-io",
   "author": "hanayashiki",
-  "module": "dist/tyrann-io.esm.js",
   "size-limit": [
     {
-      "path": "dist/tyrann-io.cjs.production.min.js",
+      "path": "dist/index.mjs",
       "limit": "10 KB"
     },
     {
-      "path": "dist/tyrann-io.esm.js",
+      "path": "dist/index.cjs",
       "limit": "10 KB"
     }
   ],
@@ -43,6 +46,7 @@
     "@types/express": "^4.17.11",
     "express": "^4.17.1",
     "husky": "^6.0.0",
+    "microbundle": "^0.14.2",
     "morgan": "^1.10.0",
     "prettier": "^2.4.1",
     "size-limit": "^4.10.2",

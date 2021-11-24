@@ -1,21 +1,27 @@
-import { isRight, makeLeft, makeRight } from './Either';
+import { isRight, makeLeft } from './Either';
 import { ErrorMessage } from './ErrorMessage';
 import { AnyResolver, OutputOf } from './infer';
-import { ErrorContext, makeErrorContext, makeResolver, Resolver } from './Resolver'
-
+import {
+  ErrorContext,
+  makeErrorContext,
+  makeResolver,
+  Resolver,
+} from './Resolver';
 
 export interface TUnion<CS extends [AnyResolver, ...AnyResolver[]]>
   extends Resolver<unknown, OutputOf<CS[number]>, ErrorMessage, 'union'> {
-    types: CS;
-  }
+  types: CS;
+}
 
-export function union<CS extends [AnyResolver, ...AnyResolver[]]>(cs: CS): TUnion<CS> {
+export function union<CS extends [AnyResolver, ...AnyResolver[]]>(
+  cs: CS
+): TUnion<CS> {
   return {
     ...makeResolver<unknown, OutputOf<CS[number]>, ErrorMessage, 'union'>(
-      'union',
+      'union'
     ),
     resolve(input, contexts = [makeErrorContext()]) {
-      const newErrorContexts: ErrorContext[] = []; 
+      const newErrorContexts: ErrorContext[] = [];
       let i = 0;
       for (const resolver of cs) {
         const nextContext: ErrorContext = {
@@ -35,11 +41,8 @@ export function union<CS extends [AnyResolver, ...AnyResolver[]]>(cs: CS): TUnio
       }
 
       contexts.pop();
-      return makeLeft([
-        ...contexts,
-        ...newErrorContexts,
-      ]);
+      return makeLeft([...contexts, ...newErrorContexts]);
     },
     types: cs,
   };
-};
+}
