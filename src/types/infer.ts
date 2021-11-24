@@ -1,4 +1,4 @@
-import { TAny } from "./BasicTypes"
+import { TAny } from "./basicTypes"
 import { Resolver } from "./Resolver"
 
 export type AnyResolver = Resolver<any, any, any, string>;

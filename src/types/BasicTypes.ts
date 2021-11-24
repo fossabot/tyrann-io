@@ -152,7 +152,7 @@ export function array<T extends AnyResolver>(t: T): TArray<T> {
       for (let i = 0; i < input.length; i++) {
         const nextContext: ErrorContext = {
           inputPath: [...contexts[contexts.length - 1].inputPath, i],
-          resolverPath: contexts[contexts.length - 1].resolverPath,
+          resolverPath: [...contexts[contexts.length - 1].resolverPath],
           error: undefined,
         };
 

@@ -1,7 +1,7 @@
 import { booleanField } from '../src/fields/booleanField';
 import { numberField, requiredNumberField } from '../src/fields/numberField';
 import { stringField } from '../src/fields/stringField';
-import { string } from '../src/types/BasicTypes';
+import { string } from '../src/types/basicTypes';
 import { makeLeft, makeRight } from '../src/types/Either';
 import { OutputOf } from '../src/types/infer';
 import { makeResolver } from '../src/types/Resolver';

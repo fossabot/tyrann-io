@@ -1,4 +1,4 @@
-import { string } from '../types/BasicTypes';
+import { string } from '../types/basicTypes';
 import { Either, makeLeft, makeRight } from '../types/Either';
 import { ErrorMessage } from '../types/ErrorMessage';
 

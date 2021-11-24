@@ -7,7 +7,7 @@ import {
   object,
   string,
   undefinedType,
-} from '../src/types/BasicTypes';
+} from '../src/types/basicTypes';
 import { InputOf, OutputOf } from '../src/types/infer';
 import { literal } from '../src/types/LiteralType';
 import { struct } from '../src/types/StructType';

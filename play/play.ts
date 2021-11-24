@@ -6,7 +6,7 @@ import {
   object,
   string,
   undefinedType,
-} from '../src/types/BasicTypes';
+} from '../src/types/basicTypes';
 import { InputOf, OutputOf } from '../src/types/infer';
 import { struct } from '../src/types/StructType';
 import { inspect } from 'util'
